@@ -47,5 +47,5 @@ onMounted(() => {
 .container { text-align: center; font-family: sans-serif; margin-top: 50px; }
 .card { background: #f4f4f4; padding: 20px; border-radius: 8px; display: inline-block; }
 .error { color: red; }
-button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+button { margin-top: 20px; padding: 10px 20px; cursor: pointer; display: block; margin-left: auto; margin-right: auto; }
 </style>
