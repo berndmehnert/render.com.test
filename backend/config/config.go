@@ -7,6 +7,7 @@ type Config struct {
 	OllamaEndpoint string
 	OllamaModel    string
 	OllamaAPIKey   string
+	UiUrl          string
 }
 
 func Load() *Config {
@@ -15,6 +16,7 @@ func Load() *Config {
 		OllamaEndpoint: getEnv("OLLAMA_API_ENDPOINT", "http://localhost:11434/api/chat"),
 		OllamaModel:    getEnv("OLLAMA_API_MODEL", "llama3.2"),
 		OllamaAPIKey:   os.Getenv("OLLAMA_API_KEY"),
+		UiUrl:          getEnv("UI_URL", "http://localhost:5173"),
 	}
 }
 
