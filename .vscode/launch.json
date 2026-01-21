@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Go",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/backend",
+            "env": {
+                "OLLAMA_API_KEY": "e0fd277a18ed4f84a1cff77f53f7fa24.jKDyLPKxb_1Dj8nDxoctqGMZ",
+                "OLLAMA_API_ENDPOINT": "https://ollama.com/api/chat",
+                "OLLAMA_API_MODEL": "gpt-oss:120b",
+                "PORT": "8080"
+            }
+        }
+    ]
+}

@@ -1,10 +1,11 @@
 package main
 
 import (
-	"encoding/json"
+	"backend/config"
+	"backend/handler"
+	"backend/middleware"
 	"log"
 	"net/http"
-	"os"
 )
 
 type Quote struct {
@@ -13,28 +14,10 @@ type Quote struct {
 }
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+	cfg := config.Load()
+	port := cfg.Port
 
-	http.HandleFunc("/api/quote", func(w http.ResponseWriter, r *http.Request) {
-		// ENABLE CORS:
-		w.Header().Set("Access-Control-Allow-Origin", "*") // In production, replace "*" with your Vue domain
-		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-		w.Header().Set("Content-Type", "application/json")
-
-		if r.Method == "OPTIONS" {
-			return
-		}
-
-		quote := Quote{
-			Message: "Go and Vue are a match made in heaven.",
-			Author:  "The Gopher",
-		}
-
-		json.NewEncoder(w).Encode(quote)
-	})
+	http.HandleFunc("/stream", middleware.CORS(handler.SSE(cfg)))
 
 	log.Printf("Backend starting on port %s...", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
