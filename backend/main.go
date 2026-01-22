@@ -8,11 +8,6 @@ import (
 	"net/http"
 )
 
-type Quote struct {
-	Message string `json:"message"`
-	Author  string `json:"author"`
-}
-
 func main() {
 	cfg := config.Load()
 	port := cfg.Port
